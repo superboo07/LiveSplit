@@ -227,14 +227,14 @@ namespace LiveSplit.Model
                 {
                     currentSegmentRTA = split.SplitTime.RealTime - previousSplitTimeRTA;
                     previousSplitTimeRTA = split.SplitTime.RealTime;
-                    if (split.BestSegmentTime.RealTime == null || currentSegmentRTA < split.BestSegmentTime.RealTime)
+                    if (split.BestSegmentTime.RealTime == null || currentSegmentRTA > split.BestSegmentTime.RealTime)
                         newBestSegment.RealTime = currentSegmentRTA;
                 }
                 if (split.SplitTime.GameTime != null)
                 {
                     currentSegmentGameTime = split.SplitTime.GameTime - previousSplitTimeGameTime;
                     previousSplitTimeGameTime = split.SplitTime.GameTime;
-                    if (split.BestSegmentTime.GameTime == null || currentSegmentGameTime < split.BestSegmentTime.GameTime)
+                    if (split.BestSegmentTime.GameTime == null || currentSegmentGameTime > split.BestSegmentTime.GameTime)
                         newBestSegment.GameTime = currentSegmentGameTime;
                 }
                 split.BestSegmentTime = newBestSegment;
@@ -244,7 +244,7 @@ namespace LiveSplit.Model
         private void UpdatePBSplits()
         {
             var curMethod = CurrentState.CurrentTimingMethod;
-            if ((CurrentState.Run.Last().SplitTime[curMethod] != null && CurrentState.Run.Last().PersonalBestSplitTime[curMethod] == null) || CurrentState.Run.Last().SplitTime[curMethod] < CurrentState.Run.Last().PersonalBestSplitTime[curMethod])
+            if ((CurrentState.Run.Last().SplitTime[curMethod] != null && CurrentState.Run.Last().PersonalBestSplitTime[curMethod] == null) || CurrentState.Run.Last().SplitTime[curMethod] > CurrentState.Run.Last().PersonalBestSplitTime[curMethod])
                 SetRunAsPB();
         }
 

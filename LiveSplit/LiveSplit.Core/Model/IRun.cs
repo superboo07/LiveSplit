@@ -188,7 +188,7 @@ namespace LiveSplit.Model
                         if (comparison == Run.PersonalBestComparisonName)
                         {
                             var currentSegment = curSplit.Comparisons[comparison][method] - previousTime;
-                            if (curSplit.BestSegmentTime[method] == null || curSplit.BestSegmentTime[method] > currentSegment)
+                            if (curSplit.BestSegmentTime[method] == null || curSplit.BestSegmentTime[method] < currentSegment)
                             {
                                 var newTime = curSplit.BestSegmentTime;
                                 newTime[method] = currentSegment;

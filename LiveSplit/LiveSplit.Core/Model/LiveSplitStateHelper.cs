@@ -192,7 +192,7 @@ namespace LiveSplit.Model
             var delta = GetPreviousSegmentDelta(state, splitNumber, BestSegmentsComparisonGenerator.ComparisonName, method);
             var curSegment = GetPreviousSegmentTime(state, splitNumber, method);
             var bestSegment = state.Run[splitNumber].BestSegmentTime[method];
-            return bestSegment == null || curSegment < bestSegment || delta < TimeSpan.Zero;
+            return bestSegment == null || curSegment > bestSegment || delta < TimeSpan.Zero;
         }
 
         private static Color GetBestSegmentColor(LiveSplitState state)

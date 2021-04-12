@@ -1015,7 +1015,7 @@ namespace LiveSplit.View
                 //Use any element in the history that has a lower time than this sum
                 foreach (var history in Run[curIndex].SegmentHistory)
                 {
-                    if (history.Value[method] < minBestSegment)
+                    if (history.Value[method] > minBestSegment)
                         minBestSegment = history.Value[method];
                 }
                 var newTime = Run[curIndex].BestSegmentTime;
